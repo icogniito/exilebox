@@ -1,0 +1,88 @@
+
+@inherits Sandbox.UI.Panel
+@using Sandbox
+
+<style>
+    Healthbar {
+        position: absolute;
+        bottom: 0px;
+        width: 419px;
+        height: 100px;
+        background-image: url(textures/ui/health/HealthPanel.png); 
+        padding: 2px;
+    }
+
+    .orbBorderContainer {
+        position: absolute;
+        bottom: 0px;
+        width: 182px;
+        height: 182px;
+    }
+
+    .orbBorder{
+        position: absolute;
+        bottom: 0px;
+        width: 182px;
+        height: 182px;
+        background-image: url(textures/ui/health/DarkOrbBorder.png); 
+        padding: 2px;
+    }
+
+    .orbGlass{
+        position: absolute;
+        bottom: 5px;
+        left: 7px;
+        width: 166px;
+        height: 166px;
+        background-image: url(textures/ui/health/orbHighlight.png); 
+        padding: 2px;
+    }
+
+    .fill {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        background-image: url(textures/ui/health/scrollFill.png);
+        padding: 2px;
+        overflow: hidden;
+        transform: rotatex(180deg);
+    }
+    .fillContainer {
+        position: absolute;
+        bottom: 7px;
+        left: 7px;
+        width: 166px;
+        height: 166px;
+        padding: 2px;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+</style>
+
+<root>
+    <div class="orbBorderContainer">
+        <div class="fillContainer">
+            <div class="fill" style="height: @(GetHealth())%"></div>
+        </div>
+        <div class="orbBorder"></div>
+        <div class="orbGlass"></div>
+    </div>
+</root>
+
+@code {
+    public int GetHealth()
+    {
+        var player = Game.LocalPawn as Pawn;
+        if (player == null) return 0;
+
+        return (int)player.Health;
+    }
+
+    protected override int BuildHash()
+    {
+        var currentHealth = GetHealth();
+
+        return currentHealth.GetHashCode();
+    }
+}
