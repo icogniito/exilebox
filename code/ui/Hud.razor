@@ -1,0 +1,23 @@
+@using Sandbox;
+@using Sandbox.UI;
+
+@namespace ExileBox
+@inherits RootPanel
+@attribute [StyleSheet( "ui/Hud.scss" )]
+
+<root>
+    <ChatBox/>
+    <VoiceList/>
+    <Healthbar />
+
+    <div class="pointer-visible" />
+</root>
+
+@code
+{
+    public override void Tick()
+    {
+        var devCam = Game.LocalClient.Components.Get<DevCamera>();
+        SetClass( "camera-movement", Input.UsingController || Input.Down(InputButton.SecondaryAttack) || devCam is not null );
+    }
+}
