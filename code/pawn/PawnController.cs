@@ -8,7 +8,7 @@ public class PawnController : EntityComponent<Pawn>
 {
 	public int StepSize => 24;
 	public int GroundAngle => 45;
-	public int JumpSpeed => 410;
+	public int JumpSpeed => 330;
 	public float Gravity => 800f;
 
 	HashSet<string> ControllerEvents = new( StringComparer.OrdinalIgnoreCase );
@@ -45,7 +45,6 @@ public class PawnController : EntityComponent<Pawn>
 		{
 			DoJump();
 		}
-
 		var mh = new MoveHelper( Entity.Position, Entity.Velocity );
 		mh.Trace = mh.Trace.Size( Entity.Hull ).Ignore( Entity );
 

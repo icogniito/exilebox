@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "c:\\local\\sbox projects\\exilebox\\code\\ExileBox.csproj": {}
+    "c:\\local\\sbox projects\\exilebox\\code\\exilebox.csproj": {}
   },
   "projects": {
-    "c:\\local\\sbox projects\\exilebox\\code\\ExileBox.csproj": {
+    "c:\\local\\sbox projects\\exilebox\\code\\exilebox.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\local\\sbox projects\\exilebox\\code\\ExileBox.csproj",
-        "projectName": "ExileBox",
-        "projectPath": "c:\\local\\sbox projects\\exilebox\\code\\ExileBox.csproj",
+        "projectUniqueName": "c:\\local\\sbox projects\\exilebox\\code\\exilebox.csproj",
+        "projectName": "exilebox",
+        "projectPath": "c:\\local\\sbox projects\\exilebox\\code\\exilebox.csproj",
         "packagesPath": "C:\\Users\\J.E.K.A\\.nuget\\packages\\",
         "outputPath": "c:\\local\\sbox projects\\exilebox\\code\\obj\\",
         "projectStyle": "PackageReference",

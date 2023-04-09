@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FfijSXnVUtjHOCoPRAvfci6LPAR1X7u6Xh1x6fyoKhz6DYqYp+/AgcwO/C5uHXyKCCa334VBi7JIpe4awrQGXg==",
+  "dgSpecHash": "sx2+DJe9xw1ttvXIEO0lsh/osRpuZakgK+SrtLBInwj7KrykqDH8oOv8qtvhFbSsbi49V58CP3Lhbzeg0ktYfw==",
   "success": true,
-  "projectFilePath": "c:\\local\\sbox projects\\exilebox\\code\\ExileBox.csproj",
+  "projectFilePath": "c:\\local\\sbox projects\\exilebox\\code\\exilebox.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -6,14 +6,12 @@ namespace ExileBox;
 
 public partial class PawnCamera : EntityComponent<Pawn>, ISingletonComponent
 {
-	protected float WheelSpeed => 30f;
 	protected Vector2 CameraDistance => new( 125, 1000 );
-	protected Vector2 PitchClamp => new( 30, 60 );
+	protected Vector2 PitchClamp => new( 40, 40 );
 
 	public object Main { get; internal set; }
 
-	float OrbitDistance = 400f;
-	float TargetOrbitDistance = 400f;
+	float OrbitDistance = 500f;
 	Angles OrbitAngles = Angles.Zero;
 
 	protected static Vector3 IntersectPlane( Vector3 pos, Vector3 dir, float z )
@@ -41,6 +39,7 @@ public partial class PawnCamera : EntityComponent<Pawn>, ISingletonComponent
 
 		Camera.Position = pawn.Position;
 		Vector3 targetPos;
+		OrbitAngles.yaw = 135;
 
 		Camera.Position += Vector3.Up * (pawn.CollisionBounds.Center.z * pawn.Scale);
 		Camera.Rotation = Rotation.From( OrbitAngles );
@@ -48,11 +47,11 @@ public partial class PawnCamera : EntityComponent<Pawn>, ISingletonComponent
 		targetPos = Camera.Position + Camera.Rotation.Backward * OrbitDistance;
 
 		Camera.Position = targetPos;
+
 		Camera.FieldOfView = 70f;
 		Camera.FirstPersonViewer = null;
 		Camera.Main.Ortho = true;
-		Camera.Main.OrthoHeight = 600;
-		Camera.Main.OrthoWidth = 800;
+		Camera.Main.OrthoHeight = 500;
 
 		Sound.Listener = new()
 		{
@@ -63,26 +62,9 @@ public partial class PawnCamera : EntityComponent<Pawn>, ISingletonComponent
 
 	public void BuildInput()
 	{
-		var wheel = -50;
-		if ( wheel != 0 )
+		if ( Input.Down( InputButton.PrimaryAttack ) )
 		{
-			TargetOrbitDistance -= wheel * WheelSpeed;
-			TargetOrbitDistance = TargetOrbitDistance.Clamp( CameraDistance.x, CameraDistance.y );
-		}
-
-		OrbitDistance = OrbitDistance.LerpTo( TargetOrbitDistance, Time.Delta * 10f );
-
-		if ( Input.UsingController || Input.Down( InputButton.SecondaryAttack ) )
-		{
-			OrbitAngles.yaw += Input.AnalogLook.yaw;
-			OrbitAngles.pitch += Input.AnalogLook.pitch;
-			OrbitAngles = OrbitAngles.Normal;
-
-			Entity.ViewAngles = OrbitAngles.WithPitch( 0f );
-		}
-		else
-		{
-			var direction = Screen.GetDirection( Mouse.Position, Camera.FieldOfView, Camera.Rotation.Normal, Screen.Size );
+			var direction = Screen.GetDirection( Mouse.Position, Camera.FieldOfView, Camera.Rotation, Screen.Size );
 			var hitPos = IntersectPlane( Camera.Position, direction, Entity.EyePosition.z );
 
 			Entity.ViewAngles = (hitPos - Entity.EyePosition).EulerAngles;

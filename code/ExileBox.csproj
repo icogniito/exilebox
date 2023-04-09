@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<AssemblyName>ExileBox</AssemblyName>
-		<PackageId>ExileBox</PackageId>
+		<AssemblyName>exilebox</AssemblyName>
+		<PackageId>exilebox</PackageId>
 		<LangVersion>11</LangVersion>
 		<NoWarn>1701;1702;1591;</NoWarn>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -29,7 +29,7 @@
 
   <PropertyGroup>
 	<OutputPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\sbox/.vs/output/</OutputPath>
-	<DocumentationFile>..\..\..\..\Program Files (x86)\Steam\steamapps\common\sbox/.vs/output/ExileBox.xml</DocumentationFile>
+	<DocumentationFile>..\..\..\..\Program Files (x86)\Steam\steamapps\common\sbox/.vs/output/exilebox.xml</DocumentationFile>
 	<RootNamespace>Sandbox</RootNamespace>
 	<Nullable>disable</Nullable>
   </PropertyGroup>

@@ -56,6 +56,8 @@ public partial class Pawn : AnimatedEntity
 	[BindComponent] public PawnAnimator Animator { get; }
 	[BindComponent] public PawnCamera Camera { get; }
 
+
+
 	public override Ray AimRay => new Ray( EyePosition, EyeRotation.Forward );
 
 	/// <summary>
@@ -127,8 +129,8 @@ public partial class Pawn : AnimatedEntity
 
 	protected void SimulateRotation()
 	{
-		var idealRotation = ViewAngles.ToRotation();
-		EyeRotation = Rotation.Slerp( Rotation, idealRotation, Time.Delta * 10f );
-		Rotation = EyeRotation;
+			var idealRotation = ViewAngles.ToRotation();
+			EyeRotation = Rotation.Slerp( Rotation, idealRotation, Time.Delta * 10f );
+			Rotation = EyeRotation;
 	}
 }

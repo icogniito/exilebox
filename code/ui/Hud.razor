@@ -8,7 +8,7 @@
 <root>
     <ChatBox/>
     <VoiceList/>
-    <Healthbar />
+    <Hudpanel />
 
     <div class="pointer-visible" />
 </root>
@@ -18,6 +18,6 @@
     public override void Tick()
     {
         var devCam = Game.LocalClient.Components.Get<DevCamera>();
-        SetClass( "camera-movement", Input.UsingController || Input.Down(InputButton.SecondaryAttack) || devCam is not null );
+        SetClass( "camera-movement", Input.UsingController || devCam is not null );
     }
 }
